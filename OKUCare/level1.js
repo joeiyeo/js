@@ -167,12 +167,20 @@ class level1 extends Phaser.Scene {
     // Add main player here with physics.add.sprite
     this.player = this.physics.add.sprite(start.x, start.y, "mainChar");
 
+    //adjust the width & height of bouding box
+this.player.body.setSize(this.player.width * 0.4, this.player.height * 0.4)
+
     this.player.setCollideWorldBounds(true);
 
     // Add enemy to Scene
     this.redCar = this.physics.add
       .sprite(redCar.x, redCar.y, "redCar")
       .setScale(1.5);
+
+      this.redCar.setSize(this.redCar.width * 1, this.redCar.height * 0.5)
+
+
+      
     this.redCar.play("redCarAnim"); // Play the animation
     this.tweens.add({
       targets: this.redCar,
@@ -191,6 +199,10 @@ class level1 extends Phaser.Scene {
     this.orangeCar = this.physics.add
       .sprite(orangeCar.x, orangeCar.y, "orangeCar")
       .setScale(1.5);
+
+      //adjust the width & height of bouding box
+this.orangeCar.setSize(this.orangeCar.width * 0.5, this.orangeCar.height * 1)
+      
     this.orangeCar.play("orangeCarAnim"); // Play the animation
     this.tweens.add({
       targets: this.orangeCar,
@@ -222,11 +234,18 @@ class level1 extends Phaser.Scene {
     this.pedLights = this.physics.add
       .sprite(pedLights.x, pedLights.y, "pedLights")
       .setScale(0.3);
+
+      
     this.pedLights.play("pedLightsAnim"); // Play the animation
 
     this.deafNPC = this.physics.add
       .sprite(deafNPC.x, deafNPC.y, "deafNPC")
       .setScale(1);
+
+      //adjust the width & height of bouding box
+this.deafNPC.body.setSize(this.deafNPC.width * 0.4, this.deafNPC.height * 0.4)
+
+
     this.deafNPC.play("deafNPCAnim"); // Play the animation
 
     // Keyboard controls
@@ -263,7 +282,7 @@ this.scene.launch("showInventory");
 this.physics.add.overlap(
   this.player,
   [this.redCar, this.orangeCar],
-  globalHitFire,
+  globalHitFire1,
   null,
   this
 );
@@ -296,6 +315,26 @@ this.physics.add.overlap(
       null,
       this
     );
+
+   
+    var spaceDown = this.input.keyboard.addKey('SPACE');
+
+let key1 = this.input.keyboard.addKey(49);
+let key2 = this.input.keyboard.addKey(50);
+let key3 = this.input.keyboard.addKey(51);
+
+key1.on('down', function(){
+    this.scene.start("level1");
+ }, this ); 
+    key2.on('down', function(){
+    this.scene.start("level2");
+    }, this );
+    key3.on('down', function(){
+    this.scene.start("level3");
+    }, this );
+
+
+
   }
 
   collectItem(player, item) {

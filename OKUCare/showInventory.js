@@ -23,10 +23,10 @@
         console.log("***showInventory");
         this.scene.bringToTop("showInventory");
 
-        //black bar
-        var rect = new Phaser.Geom.Rectangle(29, 10, 500, 80);
-        var graphics = this.add.graphics({ fillStyle: { color: '0xffffff' } });
-        graphics.fillRectShape(rect).setScrollFactor(0)
+        // //black bar
+        // var rect = new Phaser.Geom.Rectangle(10, 10, 500, 65);
+        // var graphics = this.add.graphics({ fillStyle: { color: 'ed00ac' } });
+        // graphics.fillRectShape(rect).setScrollFactor(0)
 
        // Setup heart but visible to false
        this.heartimg1 = this.add.image (100,43,'heart').setScrollFactor(0).setVisible(true).setScale(0.2);

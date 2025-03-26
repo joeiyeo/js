@@ -24,7 +24,7 @@ function updateInventory() {
   // Uses a JS function to prevent repeated codes
   // 
   ///////////////////////////////////////////////////////
-  function globalHitFire(player,item) {
+  function globalHitFire1(player,item) {
       console.log("*** player overlap fire");
      
       // Shake screen
@@ -44,6 +44,49 @@ function updateInventory() {
       //this.loselifeSnd.play();
     }
   }
+
+
+  function globalHitFire2(player,item) {
+    console.log("*** player overlap fire");
+   
+    // Shake screen
+   this.cameras.main.shake(100);
+   //this.hitenemySnd.play();
+
+    // deduct heart
+    window.heart--;
+    item.disableBody(true, true);
+    
+    // Call globalFunctions.js updateInventory
+    updateInventory.call(this)
+
+  if (window.heart == 0){
+    console.log("*** player gameosver");
+    this.scene.start("gameover");
+    //this.loselifeSnd.play();
+  }
+}
+
+function globalHitFire3(player,item) {
+  console.log("*** player overlap fire");
+ 
+  // Shake screen
+ this.cameras.main.shake(100);
+ //this.hitenemySnd.play();
+
+  // deduct heart
+  window.heart--;
+  item.disableBody(true, true);
+  
+  // Call globalFunctions.js updateInventory
+  updateInventory.call(this)
+
+if (window.heart == 0){
+  console.log("*** player gameosver");
+  this.scene.start("gameover");
+  //this.loselifeSnd.play();
+}
+}
   
   ////////////////////////////////////////////////////////
   //

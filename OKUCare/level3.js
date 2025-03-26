@@ -184,6 +184,10 @@ class level3 extends Phaser.Scene {
     // Add main player here with physics.add.sprite
     this.player = this.physics.add.sprite(start.x, start.y, "mainChar");
 
+    //adjust the width & height of bouding box
+this.player.body.setSize(this.player.width * 0.4, this.player.height * 0.4)
+
+
     this.player.setCollideWorldBounds(true);
     // // Add enemy to Scene
     this.antQueen = this.physics.add
@@ -215,6 +219,9 @@ class level3 extends Phaser.Scene {
     this.redCar = this.physics.add
       .sprite(redCar.x, redCar.y, "redCar")
       .setScale(2.5);
+
+      this.redCar.setSize(this.redCar.width * 1, this.redCar.height * 0.5)
+
     this.redCar.play("redCarAnim"); // Play the animation
     this.tweens.add({
       targets: this.redCar,
@@ -227,6 +234,9 @@ class level3 extends Phaser.Scene {
     this.redCar2 = this.physics.add
       .sprite(redCar2.x, redCar2.y, "redCar")
       .setScale(2.5);
+
+      this.redCar2.setSize(this.redCar2.width * 1, this.redCar2.height * 0.5)
+
     this.redCar2.play("redCarAnim"); // Play the animation
     this.tweens.add({
       targets: this.redCar2,
@@ -299,7 +309,12 @@ class level3 extends Phaser.Scene {
     this.blindNPC = this.physics.add
       .sprite(blindNPC.x, blindNPC.y, "blindNPC")
       .setScale(1);
+
+      this.blindNPC.body.setSize(this.blindNPC.width * 0.4, this.blindNPC.height * 0.4)
+
     this.blindNPC.play("blindNPCAnim"); // Play the animation
+
+    
 
     // Keyboard controls
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -361,7 +376,7 @@ class level3 extends Phaser.Scene {
         this.cockroach,
         this.cockroach2,
       ],
-      globalHitFire,
+      globalHitFire3,
       null,
       this
     );

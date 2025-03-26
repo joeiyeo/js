@@ -27,6 +27,14 @@ class gameover extends Phaser.Scene {
       "down",
       function () {
         console.log("Jump to main scene");
+        
+      //   this.scene.start('level1',
+      //     // Optional parameters
+      //     {
+
+      //     }
+      // );
+ 
 
         window.heart = 3; // Reset hearts
 

@@ -158,6 +158,9 @@ class level2 extends Phaser.Scene {
     // Add main player here with physics.add.sprite
     this.player = this.physics.add.sprite(start.x, start.y, "mainChar");
 
+    //adjust the width & height of bouding box
+this.player.body.setSize(this.player.width * 0.4, this.player.height * 0.4)
+
     // this.player.setCollideWorldBounds(true)
 
     // // Add enemy to Scene
@@ -232,6 +235,10 @@ class level2 extends Phaser.Scene {
     this.muteNPC = this.physics.add
       .sprite(muteNPC.x, muteNPC.y, "muteNPC")
       .setScale(1);
+
+      this.muteNPC.setSize(this.muteNPC.width * 0.5, this.muteNPC.height * 0.5)
+
+
     this.muteNPC.play("muteNPCAnim"); // Play the animation
 
     // Keyboard controls
@@ -247,7 +254,7 @@ class level2 extends Phaser.Scene {
     this.physics.add.overlap(
       this.player,
       [this.antQueen, this.antQueen2, this.cockroach, this.cockroach2],
-      globalHitFire,
+      globalHitFire2,
       null,
       this
     );
@@ -281,6 +288,22 @@ class level2 extends Phaser.Scene {
       this
     );
 
+    var spaceDown = this.input.keyboard.addKey('SPACE');
+
+let key1 = this.input.keyboard.addKey(49);
+let key2 = this.input.keyboard.addKey(50);
+let key3 = this.input.keyboard.addKey(51);
+
+key1.on('down', function(){
+    this.scene.start("level1");
+ }, this ); 
+    key2.on('down', function(){
+    this.scene.start("level2");
+    }, this );
+    key3.on('down', function(){
+    this.scene.start("level3");
+    }, this );
+
     // *** ADDED: Update inventory items
  this.time.addEvent({
   delay: 100,
@@ -296,7 +319,7 @@ this.scene.launch("showInventory");
 this.physics.add.overlap(
   this.player,
   [this.antQueen, this.antQueen2, this.cockroach, this.cockroach2],
-  globalHitFire,
+  globalHitFire2,
   null,
   this
 );
